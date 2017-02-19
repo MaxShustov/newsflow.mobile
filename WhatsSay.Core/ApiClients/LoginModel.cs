@@ -4,7 +4,7 @@ namespace WhatsSay.Core.ApiClients
 {
     public class LoginModel
     {
-        [JsonProperty("grunt_type")]
+        [JsonProperty("grant_type")]
         public string GrantType { get; set; }
 
         [JsonProperty("username")]

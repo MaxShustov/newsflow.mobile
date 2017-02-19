@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using ModernHttpClient;
@@ -9,13 +11,14 @@ namespace WhatsSay.Core.ApiClients.Implementation
 {
     public class ApiContext : IApiContext
     {
-        private const string LoginUrl = @"http://localhost:52185/api/auth/token";
+        private const string LoginUrl = @"api/auth/token";
 
         private readonly HttpClient _httpClient;
 
         public ApiContext()
         {
             _httpClient = new HttpClient(new NativeMessageHandler());
+            _httpClient.BaseAddress = new Uri(AppConfig.BaseUrl);
         }
 
         public async Task<string> Login(string login, string password)
@@ -27,7 +30,14 @@ namespace WhatsSay.Core.ApiClients.Implementation
                 Username = login
             };
 
-            var loginResult = await Post<LoginResultModel, LoginModel>(LoginUrl, loginModel);
+            var result = await _httpClient.PostAsync(LoginUrl, new FormUrlEncodedContent(new KeyValuePair<string, string>[]
+            {
+                new KeyValuePair<string, string>("grant_type", loginModel.GrantType),
+                new KeyValuePair<string, string>("username", loginModel.Username),
+                new KeyValuePair<string, string>("password", loginModel.Password)
+            }));
+            var jsonResult = await result.Content.ReadAsStringAsync();
+            var loginResult = JsonConvert.DeserializeObject<LoginResultModel>(jsonResult);
             var token = $"{loginResult.TokenType} {loginResult.AccessToken}";
 
             _httpClient.DefaultRequestHeaders.Add("Authorization", token);
