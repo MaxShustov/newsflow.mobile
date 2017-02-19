@@ -8,7 +8,7 @@ using WhatsSay.Core.ViewModels;
 
 namespace WhatsSay.Droid
 {
-    [Activity(Label = "WhatsSay.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "WhatsSay", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         private Binding<string, string> _passwordBinding;
