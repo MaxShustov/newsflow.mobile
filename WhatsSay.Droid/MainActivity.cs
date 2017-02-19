@@ -1,41 +1,51 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.OS;
 using Android.Widget;
-using WhatsSay.Core.ApiClients.Implementation;
+using GalaSoft.MvvmLight.Helpers;
+using GalaSoft.MvvmLight.Ioc;
+using WhatsSay.Core;
+using WhatsSay.Core.ViewModels;
 
 namespace WhatsSay.Droid
 {
     [Activity(Label = "WhatsSay.Droid", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        private EditText _userNameEditText;
-        private EditText _passwordEditText;
-        private Button _loginButton;
+        private Binding<string, string> _passwordBinding;
+        private Binding<string, string> _userNameBinding;
+
+        public LoginViewModel ViewModel => SimpleIoc.Default.GetInstance<LoginViewModel>();
+
+        public EditText UserNameEditText { get; set; }
+
+        public EditText PasswordEditText { get; set; }
+
+        public Button LoginButton { get; set; }
 
         protected override void OnCreate(Bundle bundle)
         {
+            AppStart.Initialize();
+
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.Main);
 
             FindIds();
-
-            _loginButton.Click += LoginButtonOnClick;
-        }
-
-        private async void LoginButtonOnClick(object sender, EventArgs eventArgs)
-        {
-            var apiContext = new ApiContext();
-
-            var token = await apiContext.Login(_userNameEditText.Text, _passwordEditText.Text);
+            BindViewModel();
         }
 
         private void FindIds()
         {
-            _userNameEditText = FindViewById<EditText>(Resource.Id.UserNameEditText);
-            _passwordEditText = FindViewById<EditText>(Resource.Id.PasswordEditText);
-            _loginButton = FindViewById<Button>(Resource.Id.LoginButton);
+            UserNameEditText = FindViewById<EditText>(Resource.Id.UserNameEditText);
+            PasswordEditText = FindViewById<EditText>(Resource.Id.PasswordEditText);
+            LoginButton = FindViewById<Button>(Resource.Id.LoginButton);
+        }
+
+        private void BindViewModel()
+        {
+            _userNameBinding = this.SetBinding(() => UserNameEditText.Text, ViewModel, () => ViewModel.UserName, BindingMode.TwoWay);
+            _passwordBinding = this.SetBinding(() => PasswordEditText.Text, ViewModel, () => ViewModel.Password, BindingMode.TwoWay);
+            LoginButton.SetCommand(ViewModel.LoginCommand);
         }
     }
 }

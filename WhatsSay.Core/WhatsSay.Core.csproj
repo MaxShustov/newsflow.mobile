@@ -38,6 +38,7 @@
     <Compile Include="ApiClients\Implementation\ApiContext.cs" />
     <Compile Include="ApiClients\LoginModel.cs" />
     <Compile Include="ApiClients\LoginResultModel.cs" />
+    <Compile Include="AppStart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>
