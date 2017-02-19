@@ -16,11 +16,14 @@
         <SolidColorBrush x:Key="WhiteBrush" Color="#f9f9f9" />
     </Page.Resources>
     <Grid Background="{StaticResource WhiteBrush}">
-        <TextBox x:Name="UserName" Text="{Binding UserName, Mode=TwoWay}" PlaceholderText="User name" VerticalAlignment="Top" Margin="10,10,10,0"/>
-        <TextBox x:Name="Password" Text="{Binding Password, Mode=TwoWay}" VerticalAlignment="Top" PlaceholderText="Password" Margin="10,50,10,0"/>
-        <Button 
+        <StackPanel VerticalAlignment="Center" Padding="0,-1,0,70">
+            <Image Source="Assets/Square310x310Logo.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="173" Margin="0,0,0,70" Width="216"/>
+            <TextBox x:Name="UserName" Text="{Binding UserName, Mode=TwoWay}" PlaceholderText="User name" VerticalAlignment="Top" Margin="10,0,10,10"/>
+            <TextBox x:Name="Password" Text="{Binding Password, Mode=TwoWay}" VerticalAlignment="Top" PlaceholderText="Password" Margin="10,0,10,10"/>
+            <Button 
             Background="{StaticResource LightGreenBrush}"
             x:Name="LoginButton" Command="{Binding LoginCommand}" Content="Login " 
-            VerticalAlignment="Top" Margin="10,90,10,0" HorizontalAlignment="Stretch"/>
+            VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,0"/>
+        </StackPanel>
     </Grid>
 </Page>
