@@ -7,10 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     DataContext="{Binding LoginViewModel, Source={StaticResource Locator}}"
     mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Color x:Key="LightGreen">#34e581</Color>
+        <SolidColorBrush x:Key="LightGreenBrush" Color="#34e581" />
+        <Color x:Key="DarkGreen">#4e505c</Color>
+        <SolidColorBrush x:Key="DarkGreenBrush" Color="#4e505c" />
+        <Color x:Key="White">#f9f9f9</Color>
+        <SolidColorBrush x:Key="WhiteBrush" Color="#f9f9f9" />
+    </Page.Resources>
+    <Grid Background="{StaticResource WhiteBrush}">
         <TextBox x:Name="UserName" Text="{Binding UserName, Mode=TwoWay}" PlaceholderText="User name" VerticalAlignment="Top" Margin="10,10,10,0"/>
         <TextBox x:Name="Password" Text="{Binding Password, Mode=TwoWay}" VerticalAlignment="Top" PlaceholderText="Password" Margin="10,50,10,0"/>
-        <Button x:Name="LoginButton" Command="{Binding LoginCommand}" Content="Login " VerticalAlignment="Top" Margin="10,90,10,0" HorizontalAlignment="Stretch"/>
+        <Button 
+            Background="{StaticResource LightGreenBrush}"
+            x:Name="LoginButton" Command="{Binding LoginCommand}" Content="Login " 
+            VerticalAlignment="Top" Margin="10,90,10,0" HorizontalAlignment="Stretch"/>
     </Grid>
 </Page>

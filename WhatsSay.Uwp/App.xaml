@@ -5,5 +5,13 @@
     RequestedTheme="Light">
     <Application.Resources>
         <vm:ViewModelLocator xmlns:vm="using:WhatsSay.Uwp"  x:Key="Locator" />
+        <ResourceDictionary x:Key="Default">
+            <Color x:Key="LightGreen">#34e581</Color>
+            <SolidColorBrush x:Key="LightGreenBrush" Color="#34e581" />
+            <Color x:Key="DarkGreen">#4e505c</Color>
+            <SolidColorBrush x:Key="DarkGreenBrush" Color="#4e505c" />
+            <Color x:Key="White">#f9f9f9</Color>
+            <SolidColorBrush x:Key="WhiteBrush" Color="#f9f9f9" />
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
