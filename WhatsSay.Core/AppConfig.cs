@@ -2,6 +2,6 @@
 {
     public class AppConfig
     {
-        public const string BaseUrl = "http://localhost:52185/";
+        public const string BaseUrl = "http://newflow-whatsays.azurewebsites.net/";
     }
 }
