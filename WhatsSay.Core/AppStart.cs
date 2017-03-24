@@ -16,6 +16,7 @@ namespace WhatsSay.Core
             SimpleIoc.Default.Register<ISettingService, SettingService>();
             SimpleIoc.Default.Register<IApiContext, ApiContext>();
             SimpleIoc.Default.Register<LoginViewModel>();
+            SimpleIoc.Default.Register<RegisterViewModel>();
         }
     }
 }
