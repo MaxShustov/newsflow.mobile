@@ -8,8 +8,10 @@ namespace WhatsSay.Core.ViewModels
 {
     public class RegisterViewModel : ViewModelBase
     {
+        private const string RegisterUrl = "api/auth/register";
+
         private readonly IApiContext _apiContext;
-        private RegisterModel _registerModel;
+        private readonly RegisterModel _registerModel;
 
         public RegisterViewModel(IApiContext apiContext)
         {
@@ -73,7 +75,7 @@ namespace WhatsSay.Core.ViewModels
 
         private async void Register()
         {
-            //TODO Implement registration
+            await _apiContext.Post(RegisterUrl, _registerModel);
         }
     }
 }

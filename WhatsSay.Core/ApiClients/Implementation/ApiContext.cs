@@ -63,6 +63,12 @@ namespace WhatsSay.Core.ApiClients.Implementation
             return (TResult)JsonConvert.DeserializeObject(jsonResult, typeof(TResult));
         }
 
+        public Task Post<TContent>(string url, TContent content)
+        {
+            var json = JsonConvert.SerializeObject(content);
+            return _httpClient.PostAsync(url, new StringContent(json, Encoding.Unicode, "application/json"));
+        }
+
         public Task Put<T>(string url, T content)
         {
             throw new System.NotImplementedException();

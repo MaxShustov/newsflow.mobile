@@ -10,6 +10,8 @@ namespace WhatsSay.Core.ApiClients.Abstract
 
         Task<TResult> Post<TResult, TContent>(string url, TContent content);
 
+        Task Post<TContent>(string url, TContent content);
+
         Task Put<T>(string url, T content);
 
         Task Delete(string url);
