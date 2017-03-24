@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WhatsSay.Core.ApiClients
+namespace WhatsSay.Core.Models
 {
     public class LoginResultModel
     {

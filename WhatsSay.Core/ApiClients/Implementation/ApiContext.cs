@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ModernHttpClient;
 using Newtonsoft.Json;
 using WhatsSay.Core.ApiClients.Abstract;
+using WhatsSay.Core.Models;
 
 namespace WhatsSay.Core.ApiClients.Implementation
 {

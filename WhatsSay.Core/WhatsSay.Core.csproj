@@ -36,14 +36,15 @@
   <ItemGroup>
     <Compile Include="ApiClients\Abstract\IApiContext.cs" />
     <Compile Include="ApiClients\Implementation\ApiContext.cs" />
-    <Compile Include="ApiClients\LoginModel.cs" />
-    <Compile Include="ApiClients\LoginResultModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\LoginResultModel.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="AppStart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\ISettingService.cs" />
     <Compile Include="Services\Implementation\SettingService.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
